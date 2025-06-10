@@ -479,6 +479,12 @@ saveRDS(org.seurat, file = "~/Datasets/Zavros/SCTransform_RPCAInt_Org.seurat.rds
 
 # 7. Cell type annotation -------------------------------------------------
 
+# Set identities
+Idents(org.seurat) <- "seurat_clusters"
+
+# SCT assay prep
+org.seurat <- PrepSCTFindMarkers(org.seurat)
+
 #2022 publication +in-house analysis
 VlnPlot(org.seurat,features=c("KRT19","MUC1","KRT17","ACTN4","LMO7"),ncol=1) #Tumor cells in-house + 2022
 VlnPlot(org.seurat,features=c("COL1A1","CALD1","COL6A3","COL1A2","FN1","POSTN","DCN")) #CAF
